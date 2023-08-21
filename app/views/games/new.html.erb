@@ -1,0 +1,24 @@
+<h1>New game</h1>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <% @letters.each do |element| %>
+    <% element %>
+    <div class="col m-2 shadow-sm p-3 rounded bg-info text-center"><strong><%= element %></strong></div>
+    <% end %>
+  </div>
+    <br>
+    <br>
+    <form class="row" action="/score" method="post" data-turbo="false">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <div class="form col-auto">
+        <%# <label for="inputquery" class="visually-hidden">Input</label> %>
+        <input type="text" name="query" class="form-control" id="inputquery" placeholder="Query">
+        <%# <input id="charset" name="charset" type="hidden" value="<%= @charset.to_s %>
+        <%= hidden_field_tag :letters, @letters %>
+      </div>
+      <div class="col-auto">
+        <button type="submit" class="btn btn-primary mb-3">Send</button>
+      </div>
+    </form>
+</div>
